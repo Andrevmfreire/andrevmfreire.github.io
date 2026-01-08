@@ -563,15 +563,37 @@
 
         @media (max-width: 768px) {
             .header-content {
-                padding: 0 2rem;
+                padding: 0 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .logo-text {
+                font-size: 0.9rem;
+                letter-spacing: 1.5px;
             }
 
             .header-right {
-                gap: 1.5rem;
+                gap: 1rem;
+                flex-wrap: wrap;
             }
 
             nav {
-                gap: 1.5rem;
+                gap: 1rem;
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-btn {
+                font-size: 0.8rem;
+            }
+
+            .lang-toggle {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.7rem;
             }
 
             main {
@@ -584,11 +606,19 @@
             }
 
             .hero-content h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+
+            .hero-content .role {
+                font-size: 1rem;
             }
 
             .cta-group {
                 flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
             }
 
             .hero-stats,
@@ -670,7 +700,8 @@
                         </svg>
                         CRTE
                     </div>
-                    <p class="cert-desc">Certified Red Team Expert</p><span class="cert-status" id="t10">February, 2026</span>
+                    <p class="cert-desc">Certified Red Team Expert</p><span class="cert-status" id="t10">February,
+                        2026</span>
                 </div>
                 <div class="cert-item">
                     <div class="cert-name">
@@ -790,17 +821,22 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="Nova mensagem do Portfolio!">
                     <input type="hidden" name="_template" value="table">
-                    
-                    <div class="form-group"><label for="name" id="t26">Name</label><input type="text" name="name" id="name" required></div>
-                    <div class="form-group"><label for="email">Email</label><input type="email" name="email" id="email" required></div>
-                    <div class="form-group"><label for="message" id="t27">Message</label><textarea name="message" id="message" required></textarea></div>
+
+                    <div class="form-group"><label for="name" id="t26">Name</label><input type="text" name="name"
+                            id="name" required></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" name="email" id="email"
+                            required></div>
+                    <div class="form-group"><label for="message" id="t27">Message</label><textarea name="message"
+                            id="message" required></textarea></div>
                     <button type="submit" class="submit-btn" id="t28">Send Message</button>
                 </form>
                 <div class="contact-info">
                     <p id="t29">Or connect with me through social media</p>
-                    <div class="social-links"><a href="https://www.linkedin.com/in/andre-freire-0053373a4" class="social-link">LinkedIn</a>
+                    <div class="social-links"><a href="https://www.linkedin.com/in/andre-freire-0053373a4"
+                            class="social-link">LinkedIn</a>
                         <a href="https://github.com/Andrevmfreire?tab=repositories" class="social-link">GitHub</a>
-                        <a href="https://www.instagram.com/andrevmfreire/" class="social-link">Instagram</a></div>
+                        <a href="https://www.instagram.com/andrevmfreire/" class="social-link">Instagram</a>
+                    </div>
                 </div>
             </div>
         </section>
