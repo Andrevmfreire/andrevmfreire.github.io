@@ -871,116 +871,129 @@
         </section>
     </main>
     <script>
-    let l = 'en';
-    const d = { 
-        en: { 
-            t1: 'Specialist in Red Team Operations and Penetration Testing with focus on Active Directory environments and corporate Windows infrastructures. Experience in adversary simulation, exploitation and privilege escalation.', 
-            t2: 'Get in Touch', 
-            t3: 'View Portfolio', 
-            t4: 'Certifications', 
-            t5: 'Solved Machines', 
-            t6: 'Years Experience', 
-            t8: 'Certifications', 
-            t9: 'Enrolled', 
-            t10: 'February, 2026', 
-            t11: 'May, 2026', 
-            t12: 'Technical Expertise', 
-            t13: 'Advanced exploitation in AD environments, privilege escalation, lateral movement, Kerberos attacks, ACL abuse and persistence techniques in corporate Windows domains.', 
-            t14: 'Adversary simulation, EDR/AV evasion techniques, C2 frameworks, OPSEC, custom TTPs development based on MITRE ATT&CK framework.', 
-            t15: 'Penetration testing in internal/external infrastructure, web applications, network assessments, vulnerability analysis and exploitation of corporate services.', 
-            t16: 'Development of custom tools, automation scripts, payloads and exploits. Proficiency in multiple languages for tailored solutions.', 
-            t17: 'Intelligence gathering, footprinting, information collection, social media analysis and complete attack surface mapping for engagements.', 
-            t18: 'Persistence techniques, privilege escalation, credential harvesting, data exfiltration and lateral movement while maintaining low detection profile.', 
-            t19: 'Portfolio & Online Presence', 
-            t20: 'Professional networking, detailed experience, projects and updates on certifications in offensive security.', 
-            t21: 'CTF write-ups, developed tools, automation scripts and custom exploits for different pentest scenarios.', 
-            t22: 'Active profile with solved machines, current ranking, platform achievements and obtained HTB certifications.', 
-            t23: 'OffSec certifications, progress in Proving Grounds labs, PEN-200 and other learning paths on the platform.', 
-            t24: 'Get in Touch', 
-            t25: "I'm always open to discussing new projects, work opportunities or partnerships in offensive security.", 
-            t26: 'Name', 
-            t27: 'Message', 
-            t28: 'Send Message', 
-            t29: 'Or connect with me through social media'
-        }, 
-        pt: { 
-            t1: 'Especialista em Red Team Operations e Penetration Testing com foco em ambientes Active Directory e infraestruturas Windows corporativas. Experiência em adversary simulation, exploitation e privilege escalation.', 
-            t2: 'Entrar em Contato', 
-            t3: 'Ver Portfolio', 
-            t4: 'Certificações', 
-            t5: 'Máquinas Resolvidas', 
-            t6: 'Anos Experiência', 
-            t8: 'Certificações', 
-            t9: 'Em Preparação', 
-            t10: 'Fevereiro, 2026', 
-            t11: 'Maio, 2026', 
-            t12: 'Experiência Técnica', 
-            t13: 'Exploitation avançada em ambientes AD, privilege escalation, lateral movement, Kerberos attacks, ACL abuse e técnicas de persistência em domínios Windows corporativos.', 
-            t14: 'Simulação de adversários, técnicas de evasão de EDR/AV, C2 frameworks, OPSEC, development de TTPs customizadas baseadas no MITRE ATT&CK framework.', 
-            t15: 'Testes de invasão em infraestrutura interna/externa, web applications, network assessments, vulnerability analysis e exploitation de serviços corporativos.', 
-            t16: 'Desenvolvimento de ferramentas customizadas, scripts de automação, payloads e exploits. Proficiência em múltiplas linguagens para soluções sob medida.', 
-            t17: 'Intelligence gathering, footprinting, information collection, social media analysis e mapeamento completo de superfície de ataque para engajamentos.', 
-            t18: 'Técnicas de persistência, privilege escalation, credential harvesting, data exfiltration e lateral movement mantendo baixo perfil de detecção.', 
-            t19: 'Portfolio & Presença Online', 
-            t20: 'Networking profissional, experiência detalhada, projetos e atualizações sobre certificações na área de segurança ofensiva.', 
-            t21: 'Write-ups de CTFs, ferramentas desenvolvidas, scripts de automação e exploits customizados para diferentes cenários de pentest.', 
-            t22: 'Perfil ativo com máquinas resolvidas, ranking atual, conquistas na plataforma e certificações HTB obtidas.', 
-            t23: 'Certificações OffSec, progresso em labs do Proving Grounds, PEN-200 e outras trilhas de aprendizado da plataforma.', 
-            t24: 'Entre em Contato', 
-            t25: 'Estou sempre aberto a discutir novos projetos, oportunidades de trabalho ou parcerias na área de segurança ofensiva.', 
-            t26: 'Nome', 
-            t27: 'Mensagem', 
-            t28: 'Enviar Mensagem', 
-            t29: 'Ou conecte-se comigo através das redes sociais'
-        } 
-    };
-    
-    const t = { 
-        home: 'ANDRÉ FREIRE', 
-        skills: 'EXPERTISE', 
-        links: 'PORTFOLIO', 
-        contact: 'CONTACT' 
-    };
-    
-    const tpt = { 
-        home: 'ANDRÉ FREIRE', 
-        skills: 'EXPERIÊNCIA', 
-        links: 'PORTFOLIO', 
-        contact: 'CONTATO' 
-    };
-    
-    function toggle() { 
-        l = l === 'en' ? 'pt' : 'en'; 
-        document.querySelector('.lang-toggle').textContent = l === 'pt' ? 'EN' : 'PT-BR'; 
-        
-        for (let k in d[l]) { 
-            let el = document.getElementById(k); 
-            if (el) el.textContent = d[l][k]; 
-        } 
-        
-        document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
-        
-        // Atualizar o logo do header baseado na página atual
-        const currentPage = document.querySelector('.content-section.active').id;
-        const logoTexts = l === 'pt' ? tpt : t;
-        document.getElementById('logo').textContent = logoTexts[currentPage];
-    }
-    
-    function go(s) { 
-        document.querySelectorAll('.content-section').forEach(e => e.classList.remove('active')); 
-        document.getElementById(s).classList.add('active'); 
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); 
-        event.target.classList.add('active'); 
-        
-        document.getElementById('logo').style.opacity = '0'; 
-        setTimeout(() => { 
-            document.getElementById('logo').textContent = (l === 'pt' ? tpt[s] : t[s]) || 'ANDRÉ FREIRE'; 
-            document.getElementById('logo').style.opacity = '1'; 
-        }, 200); 
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' }); 
-    }
-</script>
+        let l = 'en';
+        const d = {
+            en: {
+                t1: 'Specialist in Red Team Operations and Penetration Testing with focus on Active Directory environments and corporate Windows infrastructures. Experience in adversary simulation, exploitation and privilege escalation.',
+                t2: 'Get in Touch',
+                t3: 'View Portfolio',
+                t4: 'Certifications',
+                t5: 'Solved Machines',
+                t6: 'Years Experience',
+                t8: 'Certifications',
+                t9: 'Enrolled',
+                t10: 'February, 2026',
+                t11: 'May, 2026',
+                t12: 'Technical Expertise',
+                t13: 'Advanced exploitation in AD environments, privilege escalation, lateral movement, Kerberos attacks, ACL abuse and persistence techniques in corporate Windows domains.',
+                t14: 'Adversary simulation, EDR/AV evasion techniques, C2 frameworks, OPSEC, custom TTPs development based on MITRE ATT&CK framework.',
+                t15: 'Penetration testing in internal/external infrastructure, web applications, network assessments, vulnerability analysis and exploitation of corporate services.',
+                t16: 'Development of custom tools, automation scripts, payloads and exploits. Proficiency in multiple languages for tailored solutions.',
+                t17: 'Intelligence gathering, footprinting, information collection, social media analysis and complete attack surface mapping for engagements.',
+                t18: 'Persistence techniques, privilege escalation, credential harvesting, data exfiltration and lateral movement while maintaining low detection profile.',
+                t19: 'Professional Links',
+                t20: 'Access my professional profiles and published content',
+                t21: 'Hack The Box profile with solved machines, rankings and achievements in the platform.',
+                t22: 'GitHub repository with projects, tools, scripts and technical contributions to the community.',
+                t23: 'LinkedIn profile with professional experience, certifications and connections in the security field.',
+                t24: 'Technical articles, research, tutorials and knowledge sharing about offensive security.',
+                t25: 'Get in Touch',
+                t26: 'Available for consulting, projects and professional opportunities in offensive security.',
+                t27: 'Name',
+                t28: 'Email',
+                t29: 'Message',
+                t30: 'Send Message',
+                t31: 'Or reach me directly at:',
+                t32: 'LinkedIn',
+                t33: 'Email'
+            },
+            pt: {
+                t1: 'Especialista em Operações Red Team e Testes de Penetração com foco em ambientes Active Directory e infraestruturas corporativas Windows. Experiência em simulação de adversários, exploração e escalação de privilégios.',
+                t2: 'Entre em Contato',
+                t3: 'Ver Portfólio',
+                t4: 'Certificações',
+                t5: 'Máquinas Resolvidas',
+                t6: 'Anos de Experiência',
+                t8: 'Certificações',
+                t9: 'Matriculado',
+                t10: 'Fevereiro, 2026',
+                t11: 'Maio, 2026',
+                t12: 'Expertise Técnica',
+                t13: 'Exploração avançada em ambientes AD, escalação de privilégios, movimentação lateral, ataques Kerberos, abuso de ACL e técnicas de persistência em domínios Windows corporativos.',
+                t14: 'Simulação de adversários, técnicas de evasão de EDR/AV, frameworks C2, OPSEC, desenvolvimento de TTPs customizadas baseadas no framework MITRE ATT&CK.',
+                t15: 'Testes de penetração em infraestrutura interna/externa, aplicações web, avaliações de rede, análise de vulnerabilidades e exploração de serviços corporativos.',
+                t16: 'Desenvolvimento de ferramentas customizadas, scripts de automação, payloads e exploits. Proficiência em múltiplas linguagens para soluções sob medida.',
+                t17: 'Coleta de inteligência, footprinting, coleta de informações, análise de mídias sociais e mapeamento completo da superfície de ataque para engajamentos.',
+                t18: 'Técnicas de persistência, escalação de privilégios, coleta de credenciais, exfiltração de dados e movimentação lateral mantendo baixo perfil de detecção.',
+                t19: 'Links Profissionais',
+                t20: 'Acesse meus perfis profissionais e conteúdos publicados',
+                t21: 'Perfil Hack The Box com máquinas resolvidas, rankings e conquistas na plataforma.',
+                t22: 'Repositório GitHub com projetos, ferramentas, scripts e contribuições técnicas para a comunidade.',
+                t23: 'Perfil LinkedIn com experiência profissional, certificações e conexões na área de segurança.',
+                t24: 'Artigos técnicos, pesquisas, tutoriais e compartilhamento de conhecimento sobre segurança ofensiva.',
+                t25: 'Entre em Contato',
+                t26: 'Disponível para consultorias, projetos e oportunidades profissionais em segurança ofensiva.',
+                t27: 'Nome',
+                t28: 'E-mail',
+                t29: 'Mensagem',
+                t30: 'Enviar Mensagem',
+                t31: 'Ou entre em contato diretamente:',
+                t32: 'LinkedIn',
+                t33: 'E-mail'
+            }
+        };
+        const t = {
+            home: 'ANDRÉ FREIRE',
+            skills: 'EXPERTISE',
+            links: 'LINKS',
+            contact: 'CONTACT'
+        };
+        const tpt = {
+            home: 'ANDRÉ FREIRE',
+            skills: 'EXPERTISE',
+            links: 'LINKS',
+            contact: 'CONTATO'
+        };
+
+        function toggle() {
+            l = l === 'en' ? 'pt' : 'en';
+            Object.keys(d[l]).forEach(k => {
+                const e = document.getElementById(k);
+                if (e) {
+                    if (e.tagName === 'INPUT' || e.tagName === 'TEXTAREA') {
+                        e.placeholder = d[l][k];
+                    } else {
+                        e.textContent = d[l][k];
+                    }
+                }
+            });
+            document.querySelector('.lang-toggle').textContent = l === 'en' ? 'PT-BR' : 'EN-US';
+
+            const currentPage = document.querySelector('.content-section.active').id;
+            const logoTexts = l === 'pt' ? tpt : t;
+            const logoElement = document.getElementById('logo');
+            logoElement.textContent = '';
+            logoElement.textContent = logoTexts[currentPage];
+        }
+
+        function go(s) {
+            document.querySelectorAll('.content-section').forEach(e => e.classList.remove('active'));
+            document.getElementById(s).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const logoElement = document.getElementById('logo');
+            logoElement.style.opacity = '0';
+            setTimeout(() => {
+                logoElement.textContent = '';
+                logoElement.textContent = (l === 'pt' ? tpt[s] : t[s]) || 'ANDRÉ FREIRE';
+                logoElement.style.opacity = '1';
+            }, 200);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+    </script>
 </body>
 
 </html>
