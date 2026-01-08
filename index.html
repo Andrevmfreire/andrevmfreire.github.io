@@ -53,33 +53,19 @@
             align-items: center;
         }
 
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
         .logo-text {
             font-size: 1.1rem;
             font-weight: 600;
             letter-spacing: 2px;
             color: var(--accent);
             transition: opacity 0.4s ease;
-        }
-
-        .link-item h3 {
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .link-icon {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-            transition: filter 0.3s ease;
-        }
-
-        .link-item:hover .link-icon {
-            filter: brightness(0) invert(1);
+            white-space: nowrap;
         }
 
         .header-right {
@@ -439,6 +425,20 @@
             font-weight: 500;
             margin-bottom: 1rem;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .link-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            transition: filter 0.3s ease;
+        }
+
+        .link-item:hover .link-icon {
+            filter: brightness(0) invert(1);
         }
 
         .link-item p {
@@ -562,47 +562,66 @@
         }
 
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+
             .header-content {
                 padding: 0 1.5rem;
-                flex-wrap: wrap;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .header-top {
+                justify-content: space-between;
+                width: 100%;
+                gap: 1rem;
             }
 
             .logo-text {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 letter-spacing: 1.5px;
             }
 
             .header-right {
-                gap: 1rem;
-                flex-wrap: wrap;
+                width: 100%;
+                gap: 0;
+                justify-content: center;
             }
 
             nav {
-                gap: 1rem;
-                order: 3;
                 width: 100%;
-                justify-content: space-between;
-                margin-top: 1rem;
+                gap: 0;
+                justify-content: space-around;
                 padding-top: 1rem;
                 border-top: 1px solid var(--border);
             }
 
             .nav-btn {
                 font-size: 0.8rem;
+                flex: 1;
+                text-align: center;
+            }
+
+            .nav-btn::after {
+                bottom: -12px;
             }
 
             .lang-toggle {
-                font-size: 0.7rem;
-                padding: 0.35rem 0.7rem;
+                font-size: 0.65rem;
+                padding: 0.3rem 0.6rem;
             }
 
             main {
-                padding: 3rem 2rem;
+                margin-top: 140px;
+                padding: 2rem 1.5rem;
             }
 
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
+                margin-bottom: 4rem;
             }
 
             .hero-content h1 {
@@ -610,22 +629,54 @@
             }
 
             .hero-content .role {
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
             }
 
             .cta-group {
                 flex-direction: column;
+                gap: 1rem;
             }
 
             .btn {
                 width: 100%;
+                padding: 0.9rem 2rem;
             }
 
-            .hero-stats,
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-box {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
             .cert-list,
             .skills-grid,
             .links-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cert-item,
+            .skill-item,
+            .link-item {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
@@ -634,7 +685,10 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="logo-text" id="logo">ANDRÉ FREIRE</div>
+            <div class="header-top">
+                <div class="logo-text" id="logo">ANDRÉ FREIRE</div>
+                <button class="lang-toggle" onclick="toggle()">PT-BR</button>
+            </div>
             <div class="header-right">
                 <nav>
                     <button class="nav-btn active" onclick="go('home')">Home</button>
@@ -642,7 +696,6 @@
                     <button class="nav-btn" onclick="go('links')">Links</button>
                     <button class="nav-btn" onclick="go('contact')">Contact</button>
                 </nav>
-                <button class="lang-toggle" onclick="toggle()">PT-BR</button>
             </div>
         </div>
     </header>
@@ -673,10 +726,6 @@
                         <div class="stat-number">2+</div>
                         <div class="stat-label" id="t6">Years Experience</div>
                     </div>
-                    <!--<div class="stat-box">
-                        <div class="stat-number">Quarto box</div>
-                        <div class="stat-label" id="t7">Quarto box, depois alterar a tradução em 't7'</div>
-                    </div>-->
                 </div>
             </div>
             <h2 class="section-title" id="t8">Certifications</h2>
@@ -712,7 +761,6 @@
                         id="t11">May, 2026</span>
                 </div>
             </div>
-            </div>
         </section>
         <section id="skills" class="content-section">
             <h2 class="section-title" id="t12">Technical Expertise</h2>
@@ -721,49 +769,31 @@
                     <h3>Active Directory Exploitation</h3>
                     <p id="t13">Advanced exploitation in AD environments, privilege escalation, lateral movement,
                         Kerberos attacks, ACL abuse and persistence techniques in corporate Windows domains.</p>
-                    <!--<div class="tech-list"><span class="tech-tag">BloodHound</span><span
-                            class="tech-tag">PowerView</span><span class="tech-tag">Rubeus</span><span
-                            class="tech-tag">Mimikatz</span><span class="tech-tag">Impacket</span></div>-->
                 </div>
                 <div class="skill-item">
                     <h3>Red Team Operations</h3>
                     <p id="t14">Adversary simulation, EDR/AV evasion techniques, C2 frameworks, OPSEC, custom TTPs
                         development based on MITRE ATT&CK framework.</p>
-                    <!--<div class="tech-list"><span class="tech-tag">Cobalt Strike</span><span
-                            class="tech-tag">Sliver</span><span class="tech-tag">Havoc</span><span
-                            class="tech-tag">OPSEC</span><span class="tech-tag">C2</span></div>-->
                 </div>
                 <div class="skill-item">
                     <h3>Penetration Testing</h3>
                     <p id="t15">Penetration testing in internal/external infrastructure, web applications, network
                         assessments, vulnerability analysis and exploitation of corporate services.</p>
-                    <!--<div class="tech-list"><span class="tech-tag">Nmap</span><span class="tech-tag">Burp
-                            Suite</span><span class="tech-tag">Metasploit</span><span
-                            class="tech-tag">SQLMap</span><span class="tech-tag">Nuclei</span></div>-->
                 </div>
                 <div class="skill-item">
                     <h3>Tool Development</h3>
                     <p id="t16">Development of custom tools, automation scripts, payloads and exploits. Proficiency in
                         multiple languages for tailored solutions.</p>
-                    <!--<div class="tech-list"><span class="tech-tag">Python</span><span
-                            class="tech-tag">PowerShell</span><span class="tech-tag">C#</span><span
-                            class="tech-tag">Bash</span><span class="tech-tag">Go</span></div>-->
                 </div>
                 <div class="skill-item">
                     <h3>OSINT & Reconnaissance</h3>
                     <p id="t17">Intelligence gathering, footprinting, information collection, social media analysis and
                         complete attack surface mapping for engagements.</p>
-                    <!--<div class="tech-list"><span class="tech-tag">Maltego</span><span
-                            class="tech-tag">theHarvester</span><span class="tech-tag">Shodan</span><span
-                            class="tech-tag">Recon-ng</span><span class="tech-tag">Amass</span></div>-->
                 </div>
                 <div class="skill-item">
                     <h3>Post-Exploitation</h3>
                     <p id="t18">Persistence techniques, privilege escalation, credential harvesting, data exfiltration
                         and lateral movement while maintaining low detection profile.</p>
-                    <!--<div class="tech-list"><span class="tech-tag">Empire</span><span
-                            class="tech-tag">SharpHound</span><span class="tech-tag">CrackMapExec</span><span
-                            class="tech-tag">Covenant</span><span class="tech-tag">PrivescCheck</span></div>-->
                 </div>
             </div>
         </section>
@@ -817,7 +847,6 @@
                         offensive security.</p>
                 </div>
                 <form class="contact-form" action="https://formsubmit.co/andrevmfreire@outlook.com" method="POST">
-                    <!-- Configurações do FormSubmit -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="Nova mensagem do Portfolio!">
                     <input type="hidden" name="_template" value="table">
@@ -832,8 +861,8 @@
                 </form>
                 <div class="contact-info">
                     <p id="t29">Or connect with me through social media</p>
-                    <div class="social-links"><a href="https://www.linkedin.com/in/andre-freire-0053373a4"
-                            class="social-link">LinkedIn</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/andre-freire-0053373a4" class="social-link">LinkedIn</a>
                         <a href="https://github.com/Andrevmfreire?tab=repositories" class="social-link">GitHub</a>
                         <a href="https://www.instagram.com/andrevmfreire/" class="social-link">Instagram</a>
                     </div>
