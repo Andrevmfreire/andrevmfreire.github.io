@@ -918,7 +918,7 @@
                 t9: 'Matriculado',
                 t10: 'Fevereiro, 2026',
                 t11: 'Maio, 2026',
-                t12: 'Expertise Técnica',
+                t12: 'Experiência Técnica',
                 t13: 'Exploração avançada em ambientes AD, escalação de privilégios, movimentação lateral, ataques Kerberos, abuso de ACL e técnicas de persistência em domínios Windows corporativos.',
                 t14: 'Simulação de adversários, técnicas de evasão de EDR/AV, frameworks C2, OPSEC, desenvolvimento de TTPs customizadas baseadas no framework MITRE ATT&CK.',
                 t15: 'Testes de penetração em infraestrutura interna/externa, aplicações web, avaliações de rede, análise de vulnerabilidades e exploração de serviços corporativos.',
@@ -950,10 +950,22 @@
         };
         const tpt = {
             home: 'ANDRÉ FREIRE',
-            skills: 'EXPERTISE',
+            skills: 'Experiência',
             links: 'LINKS',
             contact: 'CONTATO'
         };
+
+        function updateLogo(s) {
+            const logo = document.getElementById('logo');
+            if (!logo) return;
+
+            // Abordagem definitiva: Limpa o conteúdo e força o reflow se necessário
+            const newText = (l === 'pt' ? tpt[s] : t[s]) || 'ANDRÉ FREIRE';
+
+            // Usar innerHTML vazio e depois textContent garante limpeza profunda
+            logo.innerHTML = '';
+            logo.textContent = newText;
+        }
 
         function toggle() {
             l = l === 'en' ? 'pt' : 'en';
@@ -969,27 +981,32 @@
             });
             document.querySelector('.lang-toggle').textContent = l === 'en' ? 'PT-BR' : 'EN-US';
 
-            const currentPage = document.querySelector('.content-section.active').id;
-            const logoTexts = l === 'pt' ? tpt : t;
-            const logoElement = document.getElementById('logo');
-            logoElement.textContent = '';
-            logoElement.textContent = logoTexts[currentPage];
+            const activeSection = document.querySelector('.content-section.active');
+            if (activeSection) {
+                updateLogo(activeSection.id);
+            }
         }
 
         function go(s) {
-            document.querySelectorAll('.content-section').forEach(e => e.classList.remove('active'));
-            document.getElementById(s).classList.add('active');
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            // Prevenir erro se o evento não existir (chamada direta)
+            if (window.event && window.event.target) {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                window.event.target.classList.add('active');
+            }
 
-            const logoElement = document.getElementById('logo');
-            logoElement.style.opacity = '0';
-            setTimeout(() => {
-                logoElement.textContent = '';
-                logoElement.textContent = (l === 'pt' ? tpt[s] : t[s]) || 'ANDRÉ FREIRE';
-                logoElement.style.opacity = '1';
-            }, 200);
-            
+            document.querySelectorAll('.content-section').forEach(e => e.classList.remove('active'));
+            const targetSection = document.getElementById(s);
+            if (targetSection) targetSection.classList.add('active');
+
+            const logo = document.getElementById('logo');
+            if (logo) {
+                logo.style.opacity = '0';
+                setTimeout(() => {
+                    updateLogo(s);
+                    logo.style.opacity = '1';
+                }, 200);
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
