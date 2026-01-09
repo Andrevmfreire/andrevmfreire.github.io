@@ -908,17 +908,17 @@
                 t33: 'Email'
             },
             pt: {
-                t1: 'Especialista em Operações Red Team e Testes de Penetração com foco em ambientes Active Directory e infraestruturas corporativas Windows. Experiência em simulação de adversários, exploração e escalação de privilégios.',
+                t1: 'Especialista em Operações Red Team e Testes de Penetração com foco em ambientes Active Directory e infraestruturas corporativas Windows. EXPERIÊNCIA em simulação de adversários, exploração e escalação de privilégios.',
                 t2: 'Entre em Contato',
                 t3: 'Ver Portfólio',
                 t4: 'Certificações',
                 t5: 'Máquinas Resolvidas',
-                t6: 'Anos de Experiência',
+                t6: 'Anos de EXPERIÊNCIA',
                 t8: 'Certificações',
                 t9: 'Matriculado',
                 t10: 'Fevereiro, 2026',
                 t11: 'Maio, 2026',
-                t12: 'Experiência Técnica',
+                t12: 'EXPERIÊNCIA Técnica',
                 t13: 'Exploração avançada em ambientes AD, escalação de privilégios, movimentação lateral, ataques Kerberos, abuso de ACL e técnicas de persistência em domínios Windows corporativos.',
                 t14: 'Simulação de adversários, técnicas de evasão de EDR/AV, frameworks C2, OPSEC, desenvolvimento de TTPs customizadas baseadas no framework MITRE ATT&CK.',
                 t15: 'Testes de penetração em infraestrutura interna/externa, aplicações web, avaliações de rede, análise de vulnerabilidades e exploração de serviços corporativos.',
@@ -929,7 +929,7 @@
                 t20: 'Acesse meus perfis profissionais e conteúdos publicados',
                 t21: 'Perfil Hack The Box com máquinas resolvidas, rankings e conquistas na plataforma.',
                 t22: 'Repositório GitHub com projetos, ferramentas, scripts e contribuições técnicas para a comunidade.',
-                t23: 'Perfil LinkedIn com experiência profissional, certificações e conexões na área de segurança.',
+                t23: 'Perfil LinkedIn com EXPERIÊNCIA profissional, certificações e conexões na área de segurança.',
                 t24: 'Artigos técnicos, pesquisas, tutoriais e compartilhamento de conhecimento sobre segurança ofensiva.',
                 t25: 'Entre em Contato',
                 t26: 'Disponível para consultorias, projetos e oportunidades profissionais em segurança ofensiva.',
@@ -950,7 +950,7 @@
         };
         const tpt = {
             home: 'ANDRÉ FREIRE',
-            skills: 'Experiência',
+            skills: 'EXPERIÊNCIA',
             links: 'LINKS',
             contact: 'CONTATO'
         };
@@ -959,11 +959,11 @@
             const logo = document.getElementById('logo');
             if (!logo) return;
 
-            // Abordagem definitiva: Limpa o conteúdo e força o reflow se necessário
             const newText = (l === 'pt' ? tpt[s] : t[s]) || 'ANDRÉ FREIRE';
 
-            // Usar innerHTML vazio e depois textContent garante limpeza profunda
-            logo.innerHTML = '';
+            // Limpa completamente e força reflow
+            logo.textContent = '';
+            logo.offsetHeight; // Força reflow
             logo.textContent = newText;
         }
 
